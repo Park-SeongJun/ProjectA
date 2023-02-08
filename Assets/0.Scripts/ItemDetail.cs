@@ -54,8 +54,15 @@ public class ItemDetail : MonoBehaviour
     {
         if(ibCont.IsCheck(kioskData.name, kioskData) )
         {
-            Instantiate(itembd, parent);
-            Instantiate(itembd, parent);
+            ItemBtmDetail ibd = Instantiate(itembd, parent);
+            ibd.DataSetting(kioskData, ibCont);
+
+            ibCont.itemDetails.Add(ibd);
         }
+        else
+        {
+            ibCont.AddCount(kioskData.name);
+        }
+        ibCont.TotalPrice();
     }
 }
